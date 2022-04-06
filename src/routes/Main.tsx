@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 const Container = styled.div`
-  user-select:none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width:100%;
+   height:100vh;
+    display: flex; 
+    align-items: center; /* 수직 정렬 */
+    justify-content: center; /* 수평 정렬 */
 `;
 const Title = styled.h1`
   @font-face {
@@ -23,11 +24,9 @@ const Title = styled.h1`
 `
 const LoginDiv = styled.div`
   justify-content:center;
-  display:block;
+  user-select:none;
   text-align:center;
-  margin-top: 15% ;
   background-color: #121212;
-  height:400px;
   width:400px;
   border-radius: 10px;
 `
