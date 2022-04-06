@@ -9,6 +9,7 @@ import allLocales from "@fullcalendar/core/locales-all";
 import interactionPlugin from "@fullcalendar/interaction";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import { INITIAL_EVENTS, createEventId } from "../utils/event-utils";
+import { MainPage } from "./MainPage";
 export const Calender = () => {
 const [currentEvents, setCurrentEvents] = useState<EventApi[]>([]);
     const handleEvents = useCallback(
@@ -39,6 +40,7 @@ const [currentEvents, setCurrentEvents] = useState<EventApi[]>([]);
     }
   }, []);
     return (
+
     <div className="demo-app">
       <div className="demo-app-main">
         <FullCalendar
@@ -54,6 +56,7 @@ const [currentEvents, setCurrentEvents] = useState<EventApi[]>([]);
           eventClick={handleEventClick}
         />
       </div>
-    </div>
+            </div>
+        
     )
 }

@@ -1,7 +1,9 @@
+import { useRouteMatch,Link, Switch, Route } from "react-router-dom"
 import styled from "styled-components"
+import { Calender } from "./Calender"
+import { StopWatch } from "./StopWatch"
 
-export const MainPage = () => {
-    const Wrapper = styled.div`
+const Wrapper = styled.div`
     width:100%;
     height:100vh;
     display: flex; 
@@ -30,23 +32,20 @@ export const MainPage = () => {
     margin-top:50px;
     justify-content: center;
     `
-    const BtnOption = styled.div `
+    const BtnOption = styled.div`
     user-select:none;
     cursor: pointer;
     &:hover{
     cursor: pointer;  
     color: #64BEFF;
-  }
+    }
     `
     const Mainbtn = styled(BtnOption)` 
-    cursor: pointer;
     font-size: 38px;
     text-align:center;
     color:black;
     width: 316px;
     height: 93px;
-    left: 644px;
-    top: 144px;
     border-radius: 20px 0px 0px 20px;
     line-height :90px;
     color:white; 
@@ -56,7 +55,7 @@ export const MainPage = () => {
     border-radius: 0px 20px 20px 0px;
     background-color: black ;
     `
-    const Yoosobtn = styled(BtnOption)`
+    const Yoosobtn = styled(BtnOption)<{isActive:boolean}>`
     font-size: 38px;
     text-align:center;
     border: 2px solid #FFFFFF;
@@ -67,20 +66,40 @@ export const MainPage = () => {
     margin-left:67px;
     border-radius: 20px;
     `
+export const MainPage = () => {
+    const dayMatch = useRouteMatch("/mainpage/calendar");
+    const watchMatch = useRouteMatch("/mainpage/stopwatch");
     return (
         <Wrapper>
             <Main>
                 <ButtonWrapper>
-                    <Mainbtn >메인페이지</Mainbtn>
+                    <Mainbtn>
+                        <Link to={`/mainpage`}>
+                            메인페이지
+                        </Link>
+                    </Mainbtn>
                     <Mypagebtn>마이페이지</Mypagebtn>
                 </ButtonWrapper>
                 <YoosoWrapper>
-                    <Yoosobtn>기록 </Yoosobtn>
-                    <Yoosobtn>루틴</Yoosobtn>
-                    <Yoosobtn>날짜</Yoosobtn>
-                    <Yoosobtn>운동영상</Yoosobtn>
-                    <Yoosobtn>커뮤니티</Yoosobtn>
+                    <Yoosobtn isActive={dayMatch! == null}>
+                        <Link to={`/mainpage/stopwatch`}>
+                            기록
+                        </Link>
+                    </Yoosobtn>
+                    <Yoosobtn isActive={dayMatch! == null}>
+                        <Link to={`/mainpage/calendar`}>
+                            날짜
+                        </Link>
+                    </Yoosobtn>
                 </YoosoWrapper>
+                <Switch>
+                    <Route path={`/mainpage/stopwatch`}>
+                        <StopWatch/>
+                    </Route>
+                    <Route path={`/mainpage/calendar`}>
+                        <Calender/>
+                    </Route>
+                </Switch>
             </Main>
         </Wrapper>
     )

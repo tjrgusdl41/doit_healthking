@@ -10,9 +10,6 @@ function Router() {
          <Route path="/mainpage">
            <MainPage />
         </Route>
-         <Route path="/calendar">
-           <Calender />
-        </Route>
         <Route path="/">
            <Main />
         </Route>
