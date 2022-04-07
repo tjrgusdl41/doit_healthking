@@ -1,6 +1,6 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Calender } from "./routes/Calender";
-import Main from "./routes/Main";
+import Login from "./routes/Login";
 import { MainPage } from "./routes/MainPage";
 
 function Router() {
@@ -11,7 +11,7 @@ function Router() {
            <MainPage />
         </Route>
         <Route path="/">
-           <Main />
+           <Login />
         </Route>
       </Switch>
     </BrowserRouter>

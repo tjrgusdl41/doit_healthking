@@ -1,6 +1,7 @@
 import { useRouteMatch,Link, Switch, Route } from "react-router-dom"
 import styled from "styled-components"
 import { Calender } from "./Calender"
+import { Routine } from "./Routine"
 import { StopWatch } from "./StopWatch"
 
 const Wrapper = styled.div`
@@ -20,7 +21,7 @@ const Wrapper = styled.div`
     `
     const YoosoWrapper = styled.div` 
     display:flex;
-    width:1328px;
+    width:1300px;
     margin:0 auto;
     margin-top:50px;
     justify-content: center;
@@ -43,7 +44,7 @@ const Wrapper = styled.div`
     const Mainbtn = styled(BtnOption)` 
     font-size: 38px;
     text-align:center;
-    color:black;
+    color:white;
     width: 316px;
     height: 93px;
     border-radius: 20px 0px 0px 20px;
@@ -66,6 +67,9 @@ const Wrapper = styled.div`
     margin-left:67px;
     border-radius: 20px;
     `
+    const FirstBtn = styled(Yoosobtn)` 
+    margin:0;
+    `
 export const MainPage = () => {
     const dayMatch = useRouteMatch("/mainpage/calendar");
     const watchMatch = useRouteMatch("/mainpage/stopwatch");
@@ -81,9 +85,14 @@ export const MainPage = () => {
                     <Mypagebtn>마이페이지</Mypagebtn>
                 </ButtonWrapper>
                 <YoosoWrapper>
-                    <Yoosobtn isActive={dayMatch! == null}>
+                    <FirstBtn isActive={dayMatch! == null}>
                         <Link to={`/mainpage/stopwatch`}>
                             기록
+                        </Link>
+                    </FirstBtn>
+                    <Yoosobtn isActive={dayMatch! == null}>
+                        <Link to={`/mainpage/routine`}>
+                            루틴
                         </Link>
                     </Yoosobtn>
                     <Yoosobtn isActive={dayMatch! == null}>
@@ -91,8 +100,22 @@ export const MainPage = () => {
                             날짜
                         </Link>
                     </Yoosobtn>
+                    <Yoosobtn isActive={dayMatch! == null}>
+                        <Link to={`/mainpage/stopwatch`}>
+                            영상
+                        </Link>
+                    </Yoosobtn>
+                    <Yoosobtn isActive={dayMatch! == null}>
+                        <Link to={`/mainpage/stopwatch`}>
+                            커뮤
+                        </Link>
+                    </Yoosobtn>
+                    
                 </YoosoWrapper>
                 <Switch>
+                    <Route path={`/mainpage/routine`}>
+                        <Routine/>
+                    </Route>
                     <Route path={`/mainpage/stopwatch`}>
                         <StopWatch/>
                     </Route>

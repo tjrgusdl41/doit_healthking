@@ -74,7 +74,7 @@ const Expla = styled.div`
     cursor: pointer;
   }
 `
-function Main() {
+function Login() {
   const setDarkAtom = useSetRecoilState(isDarkAtom);
   const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
   return (
@@ -94,4 +94,4 @@ function Main() {
     </Container>
   );
 }
-export default Main;
+export default Login;
