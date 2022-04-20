@@ -1,6 +1,9 @@
 import styled from "styled-components"
 import Modal from "react-modal";
 import { useState } from "react";
+import AddRoutine from "../Components/Routine/AddRoutine";
+import MakeRoutine from "../Components/Routine/MakeRoutine";
+import RoutineList from "../Components/Routine/RoutineList";
   const BtnOption = styled.div`
     user-select:none;
     cursor: pointer;
@@ -31,9 +34,11 @@ import { useState } from "react";
     background-color: black ;
     `
 export const Routine = () => {
-    
+     const [modalIsOpen, setIsOpen] = useState(false);
+    const [modalList, setModalList] = useState(false);
 const customStyles = {
     content: {
+    color:"black",
     width: "500px",
     height: "500px",
     top: '50%',
@@ -44,8 +49,12 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
   },
 };
-    const [modalIsOpen, setIsOpen] = useState(false);
-
+    function openList() { 
+        setModalList(true);
+    }
+    function closeList() { 
+        setModalList(false);
+    }
   function openModal() {
     setIsOpen(true);
   }
@@ -54,16 +63,14 @@ const customStyles = {
   }
     return (
        <ButtonWrapper>
-            <Mainbtn onClick={openModal}>루틴만들기</Mainbtn>
-            <Modal isOpen={modalIsOpen} style={customStyles}>
-            <div>루틴만들기</div>
-            <form>
-            <input />
-            <button>루틴만들기</button>
-                </form>
-                  <button onClick={closeModal}>close</button>
+            <Mainbtn onClick={openModal}>운동만들기</Mainbtn>
+        <Modal isOpen={modalIsOpen} style={customStyles}>
+          <MakeRoutine/>
+              <button onClick={closeModal}>close</button>
             </Modal>
-            <Mypagebtn >루틴보기</Mypagebtn>
+            <Mypagebtn onClick={openList}>운동목록</Mypagebtn>
+        <Modal isOpen={modalList} style={customStyles}>루틴목록
+          <button onClick={closeList}>close</button></Modal>
         </ButtonWrapper>
     )
 }

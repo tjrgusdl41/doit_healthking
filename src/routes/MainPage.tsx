@@ -72,6 +72,7 @@ const Wrapper = styled.div`
     `
 export const MainPage = () => {
     const dayMatch = useRouteMatch("/mainpage/calendar");
+    const routineMatch = useRouteMatch("/mainpage/routine");
     const watchMatch = useRouteMatch("/mainpage/stopwatch");
     return (
         <Wrapper>
@@ -90,9 +91,9 @@ export const MainPage = () => {
                             기록
                         </Link>
                     </FirstBtn>
-                    <Yoosobtn isActive={dayMatch! == null}>
+                    <Yoosobtn isActive={routineMatch! == null}>
                         <Link to={`/mainpage/routine`}>
-                            루틴
+                            운동
                         </Link>
                     </Yoosobtn>
                     <Yoosobtn isActive={dayMatch! == null}>

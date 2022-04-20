@@ -89,7 +89,7 @@ function Login() {
         </Inputs>
         <Button>LOGIN</Button>
         <Button>REGISTER</Button>
-        <Expla>비회원으로 진행하기</Expla>
+        <Link to='/mainpage'><Expla>비회원으로 진행하기</Expla></Link>
       </LoginDiv>
     </Container>
   );

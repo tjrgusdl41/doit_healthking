@@ -1,8 +1,8 @@
 import { useEffect } from "react"
 import { useState } from "react"
 import styled from "styled-components"
-import Timer from "../Components/Timer"
-import { Watchbtn } from "../Components/Watchbtn"
+import Timer from "../Components/StopWatch/Timer"
+import { Watchbtn } from "../Components/StopWatch/Watchbtn"
 const WatchWrapper = styled.div`
     display:flex;
     width:1328px;
@@ -65,7 +65,6 @@ export const StopWatch = () => {
                     handleStart={handleStart}
                     handlePauseResume={handlePauseResume}
                     handleReset={handleReset}>
-
                 </Watchbtn>
             </ButtonWrapper>
             
