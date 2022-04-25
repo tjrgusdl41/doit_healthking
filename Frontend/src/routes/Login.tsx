@@ -1,10 +1,9 @@
 import {  useSetRecoilState } from "recoil";
 import { isDarkAtom } from "./atoms";
-import { useQuery } from "react-query";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Helmet } from "react-helmet";
-import { Calender } from "./Calender";
+import axios from "axios";
 const Container = styled.div`
   width:100%;
    height:100vh;
@@ -55,7 +54,7 @@ const Inputs = styled.div`
     padding: 6px 10px;
     margin-bottom:22px;
 `
-const Button = styled.div`
+const Button = styled.button`
   &:hover{
     cursor: pointer;  
     background-color: #9CA6FF;
@@ -75,22 +74,65 @@ const Expla = styled.div`
   }
 `
 function Login() {
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data: any) => {
+    console.log(data)
+    const body = {
+      id: data.idform,
+      pw: data.pwform,
+    };
+    // login통신 로직 로그인 되면 usestate true로 바꿔줘야함
+    const AdminLogin = async () => {
+      try {
+        const response = await axios.post(`http://localhost:3006/login`, body);
+        if (response.status == 200) {
+          console.log(response);
+          alert("로그인에 성공하였습니다");
+        }
+      } catch (err) {
+        alert("로그인에 실패하였습니다");
+        console.log(err);
+      }
+    };
+    AdminLogin();
+  };
   const setDarkAtom = useSetRecoilState(isDarkAtom);
   const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
   return (
     <Container>
       <LoginDiv>
+        <form onSubmit={handleSubmit(onSubmit)}>
         <Title>켠김에 헬창까지</Title>
         <Inputs>
-          <Input placeholder="username"></Input>
+          <Input
+          type="text"
+          placeholder="아이디"
+          {...register("idform", {
+            required: true,
+          })}
+        />
         </Inputs>
         <Inputs>
-          <Input placeholder="username"></Input>
+           <Input
+          placeholder="비밀번호"
+          type="password"
+          {...register("pwform", {
+            required: true,
+
+          })}
+        />
         </Inputs>
-        <Button>LOGIN</Button>
+          <Button onSubmit={onSubmit} type="submit">LOGIN</Button>
+          </form>
         <Button>REGISTER</Button>
         <Link to='/mainpage'><Expla>비회원으로 진행하기</Expla></Link>
       </LoginDiv>
+      
     </Container>
   );
 }
