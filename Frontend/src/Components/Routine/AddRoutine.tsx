@@ -1,15 +1,18 @@
+import { BorderBottom } from '@material-ui/icons';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 const Title = styled.h2` 
     font-size:50px;
-    background: skyblue ;
     text-align:center;
 
 `
 const FormContainer = styled.div` 
     text-align:center;
-    background:pink ;
     width:100%;
+`
+const Input = styled.input`
+border:0;
+border-bottom:1px solid skyblue;
 `
 const AddRoutine = ({onAdd}:any) => {
     const [form, setForm] = useState({
@@ -42,13 +45,15 @@ const AddRoutine = ({onAdd}:any) => {
             <Title>운동 추가</Title>
             <FormContainer>
             <p>
-                <label>운동이름</label>
-                <input type="text" name="name" value={name} onChange={inputChange}/>
-            </p>
+                <label>운동이름</label >
+                    <Input type="text" name="name" value={name} onChange={inputChange}/>
+                </p>
+                <br></br>
             <p>
                 <label>운동갯수</label>
-                <input type="text" name="job" value={job} onChange={inputChange} />
-            </p>
+                    <Input type="text" name="job" value={job} onChange={inputChange} />
+                </p>
+                    <br></br>
             <button>추가</button>
             </FormContainer>
         </form>

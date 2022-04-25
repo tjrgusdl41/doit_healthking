@@ -3,7 +3,6 @@ import RoutineItem from './RoutineItem';
 import styled from 'styled-components';
 const Title = styled.h2` 
     font-size:50px;
-    background: skyblue ;
     text-align:center;
 
 `

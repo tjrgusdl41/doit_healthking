@@ -71,6 +71,7 @@ const customStyles = {
             <Mypagebtn onClick={openList}>운동목록</Mypagebtn>
         <Modal isOpen={modalList} style={customStyles}>루틴목록
           <button onClick={closeList}>close</button></Modal>
-        </ButtonWrapper>
+
+      </ButtonWrapper>
     )
 }
