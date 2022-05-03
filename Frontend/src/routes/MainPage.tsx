@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Calender } from "./Calender"
 import { Routine } from "./Routine"
 import { StopWatch } from "./StopWatch"
-import Video from "./Video"
+import Video from "./Video/Video"
 
 const Wrapper = styled.div`
     width:100%;
@@ -108,7 +108,7 @@ export const MainPage = () => {
                         </Link>
                     </Yoosobtn>
                     <Yoosobtn isActive={dayMatch! == null}>
-                        <Link to={`/mainpage/stopwatch`}>
+                        <Link to={`/mainpage/`}>
                             커뮤
                         </Link>
                     </Yoosobtn>

@@ -56,7 +56,7 @@ const [currentEvents, setCurrentEvents] = useState<EventApi[]>([]);
           eventClick={handleEventClick}
         />
       </div>
-            </div>
+    </div>
         
     )
 }
